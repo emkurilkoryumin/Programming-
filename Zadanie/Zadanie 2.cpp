@@ -2,15 +2,11 @@
 #include <iostream>
 using namespace std;
 
-class MedianFinder {
-private:
-    priority_queue<int> maxHeap; 
-    priority_queue<int, vector<int>, greater<int>> minHeap; 
-
-public:
-    MedianFinder() {}
-
-    void addNum(int num) {
+int main() {
+    priority_queue<int> maxHeap;
+    priority_queue<int, vector<int>, greater<int>> minHeap;
+    int num;
+    void addNum(int num); {
         if (maxHeap.empty() || num < maxHeap.top()) {
             maxHeap.push(num);
         }
@@ -18,7 +14,6 @@ public:
             minHeap.push(num);
         }
 
-       
         if (maxHeap.size() > minHeap.size() + 1) {
             minHeap.push(maxHeap.top());
             maxHeap.pop();
@@ -37,15 +32,12 @@ public:
             return maxHeap.top();
         }
     }
-};
 
-int main() {
-    MedianFinder mf;
-    mf.addNum(2);
-    mf.addNum(3);
-    cout << "Median: " << mf.findMedian() << endl;
-    mf.addNum(4);
-    cout << "Median: " << mf.findMedian() << endl;
+    addNum(2);
+    addNum(3);
+    cout << "Median: " << findMedian() << endl;
+    addNum(4);
+    cout << "Median: " << findMedian() << endl;
 
     return 0;
 }
